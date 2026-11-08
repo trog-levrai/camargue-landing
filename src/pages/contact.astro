@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import { SITE, telHref, mailHref } from '../config/site';
+
+const champ = 'mt-1 w-full rounded-lg border border-earth-300 bg-white px-4 py-3 text-base';
+---
+
+<BaseLayout
+  title={`Contact et devis débroussaillage, jardins | ${SITE.nom}`}
+  description="Contactez notre artisan à Saint-Gilles par téléphone, WhatsApp, e-mail ou formulaire pour un devis de débroussaillage, de broyage ou de création de jardin en Camargue."
+  breadcrumb="Contact"
+>
+  <h1 class="text-3xl sm:text-4xl">Contact et demande de devis en Camargue</h1>
+  <p class="mt-4 max-w-3xl text-lg">
+    Pour un devis de débroussaillage, de broyage de végétation ou de création de jardin à Saint-Gilles et en
+    Camargue, appelez-nous, écrivez-nous sur WhatsApp ou par e-mail, ou remplissez le formulaire ci-dessous.
+  </p>
+
+  <section class="mt-8 grid gap-4 sm:grid-cols-2" aria-label="Moyens de contact">
+    <div class="flex items-center gap-3 rounded-2xl bg-brand-600 p-4 text-white">
+      <a href={telHref} class="flex-1 text-center font-bold hover:opacity-95">
+        Appeler<br /><span class="font-normal">{SITE.telephone}</span>
+      </a>
+      <WhatsAppButton size="lg" />
+    </div>
+    <a href={mailHref} class="rounded-2xl border-2 border-brand-600 p-5 text-center font-bold text-brand-700 hover:bg-brand-50">
+      E-mail<br /><span class="font-normal">{SITE.email}</span>
+    </a>
+  </section>
+
+  <section class="mt-12 max-w-2xl" aria-labelledby="form-titre">
+    <h2 id="form-titre" class="text-2xl sm:text-3xl">Formulaire de contact</h2>
+    {/* TODO(personnalisation) : remplacer {{FORMSPREE_ID}} dans src/config/site.ts par l'identifiant du formulaire Formspree. */}
+    <form action={`https://formspree.io/f/${SITE.formspreeId}`} method="POST" class="mt-6 space-y-4">
+      <div>
+        <label for="nom" class="font-semibold">Nom et prénom *</label>
+        <input id="nom" name="nom" type="text" required autocomplete="name" class={champ} />
+      </div>
+      <div>
+        <label for="email" class="font-semibold">E-mail *</label>
+        <input id="email" name="email" type="email" required autocomplete="email" class={champ} />
+      </div>
+      <div>
+        <label for="telephone" class="font-semibold">Téléphone</label>
+        <input id="telephone" name="telephone" type="tel" autocomplete="tel" class={champ} />
+      </div>
+      <div>
+        <label for="commune" class="font-semibold">Commune du chantier</label>
+        <input id="commune" name="commune" type="text" class={champ} />
+      </div>
+      <div>
+        <label for="sujet" class="font-semibold">Votre demande</label>
+        <select id="sujet" name="sujet" class={champ}>
+          <option>Broyage / débroussaillage</option>
+          <option>Conception / aménagement de jardin</option>
+          <option>Autre demande</option>
+        </select>
+      </div>
+      <div>
+        <label for="message" class="font-semibold">Message *</label>
+        <textarea id="message" name="message" rows="5" required class={champ}></textarea>
+      </div>
+      {/* Anti-spam (honeypot) : champ masqué, ignoré par Formspree s'il est rempli. */}
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+      <button type="submit" class="w-full rounded-full bg-brand-600 px-6 py-4 text-lg font-bold text-white hover:bg-brand-700 sm:w-auto">
+        Envoyer ma demande
+      </button>
+      <p class="text-sm">
+        Les informations saisies servent uniquement à répondre à votre demande. Les champs marqués d’une * sont
+        obligatoires.
+      </p>
+    </form>
+  </section>
+</BaseLayout>

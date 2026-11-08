@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Img from '../components/Img.astro';
+import ClientTypes from '../components/ClientTypes.astro';
+import ZoneIntervention from '../components/ZoneIntervention.astro';
+import CallToAction from '../components/CallToAction.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import { SITE, telHref } from '../config/site';
+import { withBase } from '../utils/url';
+import hero from '../assets/realisations/10.jpg';
+import jardin from '../assets/realisations/09.jpg';
+import broyage from '../assets/broyeur.webp';
+---
+
+<BaseLayout
+  title={`Broyage, débroussaillage et jardins en Camargue | ${SITE.nom}`}
+  description={`Artisan à Saint-Gilles (Gard) : broyage de végétation, débroussaillage et création de jardins dans toute la Camargue, pour particuliers, professionnels et collectivités.`}
+>
+  <section class="grid items-center gap-8 lg:grid-cols-2">
+    <div>
+      <h1 class="text-3xl leading-tight sm:text-4xl lg:text-5xl">
+        Broyage, débroussaillage et création de jardins en Camargue
+      </h1>
+      <p class="mt-4 text-lg">
+        {SITE.nom} est un artisan basé à {SITE.ville} ({SITE.departement}) qui débroussaille et broie la
+        végétation de vos terrains, et qui conçoit et aménage vos jardins, dans toute la Camargue.
+      </p>
+      <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+        <div class="flex items-center gap-2">
+          <a
+            href={telHref}
+            class="rounded-full bg-brand-600 px-6 py-3 text-center font-bold text-white hover:bg-brand-700"
+          >
+            Appeler le {SITE.telephone}
+          </a>
+          <WhatsAppButton size="md" />
+        </div>
+        <a
+          href={withBase('/contact/')}
+          class="rounded-full border-2 border-brand-600 px-6 py-3 text-center font-bold text-brand-700 hover:bg-brand-50"
+        >
+          Demander un devis
+        </a>
+      </div>
+    </div>
+    <Img
+      src={hero}
+      alt="Jardin aménagé en Camargue : allée en ardoise sur pelouse, brasero et espace boisé"
+      loading="eager"
+      class="aspect-[3/2] w-full rounded-2xl object-cover object-[center_62%]"
+    />
+  </section>
+
+  <section aria-labelledby="services-titre" class="mt-16">
+    <h2 id="services-titre" class="text-2xl sm:text-3xl">Nos deux prestations</h2>
+    <div class="mt-6 grid gap-6 md:grid-cols-2">
+      <article class="overflow-hidden rounded-2xl border border-earth-100 bg-white">
+        <Img
+          src={broyage}
+          alt="Broyeur professionnel pour le débroussaillage et le broyage de végétation sur les terrains de Camargue"
+          class="aspect-[3/2] w-full object-cover object-center"
+        />
+        <div class="p-6">
+          <h3 class="text-xl">Broyage et débroussaillage</h3>
+          <p class="mt-2">
+            Terrain envahi par les herbes, friche, parcelle à entretenir ou obligation légale de débroussaillement :
+            nous remettons votre terrain en état et l’entretenons dans la durée.
+          </p>
+          <a class="mt-4 inline-block font-semibold text-brand-700 underline" href={withBase('/broyage-debroussaillage/')}>
+            Découvrir le broyage et le débroussaillage
+          </a>
+        </div>
+      </article>
+      <article class="overflow-hidden rounded-2xl border border-earth-100 bg-white">
+        <Img
+          src={jardin}
+          alt="Massif triangulaire paillé autour d’un arbre, pelouse tondue et haie sur un jardin avec piscine en Camargue"
+          class="aspect-[3/2] w-full object-cover object-center"
+        />
+        <div class="p-6">
+          <h3 class="text-xl">Conception et aménagement de jardins</h3>
+          <p class="mt-2">
+            Plantations, massifs, haies, allées : nous dessinons et réalisons des jardins adaptés au vent, au sel et à
+            la sécheresse de la Camargue.
+          </p>
+          <a class="mt-4 inline-block font-semibold text-brand-700 underline" href={withBase('/conception-jardins/')}>
+            Découvrir la conception de jardins
+          </a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <ClientTypes />
+  <ZoneIntervention />
+
+  <div class="mt-16">
+    <CallToAction />
+  </div>
+</BaseLayout>

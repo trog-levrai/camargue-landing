@@ -1,0 +1,30 @@
+---
+import { SITE, telHref } from '../config/site';
+import { withBase } from '../utils/url';
+import WhatsAppButton from './WhatsAppButton.astro';
+
+interface Props {
+  titre?: string;
+  texte?: string;
+}
+const {
+  titre = 'Un projet, un terrain à entretenir ?',
+  texte = 'Appelez-nous ou écrivez-nous : nous étudions votre demande et vous proposons un devis pour toute la Camargue.',
+} = Astro.props;
+---
+
+<aside class="rounded-2xl bg-brand-600 px-6 py-10 text-center text-white">
+  <h2 class="!text-white text-2xl sm:text-3xl">{titre}</h2>
+  <p class="mx-auto mt-3 max-w-xl">{texte}</p>
+  <div class="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
+    <div class="flex items-center gap-2">
+      <a href={telHref} class="rounded-full bg-white px-6 py-3 font-bold text-brand-700 hover:bg-earth-100">
+        Appeler le {SITE.telephone}
+      </a>
+      <WhatsAppButton size="md" />
+    </div>
+    <a href={withBase('/contact/')} class="rounded-full border-2 border-white px-6 py-3 font-bold hover:bg-brand-700">
+      Demander un devis
+    </a>
+  </div>
+</aside>

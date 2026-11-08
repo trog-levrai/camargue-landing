@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Img from '../components/Img.astro';
+import ClientTypes from '../components/ClientTypes.astro';
+import ZoneIntervention from '../components/ZoneIntervention.astro';
+import CallToAction from '../components/CallToAction.astro';
+import { SITE } from '../config/site';
+import { withBase } from '../utils/url';
+import broyage from '../assets/broyeur.webp';
+
+const prestations = [
+  ['Broyage de végétation', 'Remise en état de terrains envahis par les herbes hautes, ronces et broussailles, avec broyage sur place.'],
+  ['Débroussaillage de parcelles', 'Dégagement des abords de mas, maisons, bâtiments, chemins et clôtures.'],
+  ['Entretien régulier', 'Passages réguliers pour garder un terrain propre toute l’année, sans repartir de zéro.'],
+  ['Débroussaillement obligatoire', 'Mise en conformité de votre terrain avec les obligations légales de débroussaillement.'],
+];
+---
+
+<BaseLayout
+  title={`Broyage de végétation et débroussaillement en Camargue | ${SITE.nom}`}
+  description="Broyage de végétation et débroussaillement à Saint-Gilles et dans toute la Camargue : terrains envahis, entretien de parcelles et obligation légale de débroussaillement."
+  breadcrumb="Broyage et débroussaillage"
+>
+  <h1 class="text-3xl sm:text-4xl">Broyage de végétation et débroussaillage en Camargue</h1>
+  <p class="mt-4 max-w-3xl text-lg">
+    Vous cherchez un professionnel pour un broyage de végétation en Camargue ou un débroussaillement à
+    Saint-Gilles ? {SITE.nom} remet en état les terrains envahis par les herbes et les broussailles, et entretient
+    vos parcelles.
+  </p>
+
+  <Img
+    src={broyage}
+    alt="Broyeur professionnel pour le débroussaillage et le broyage de végétation sur les terrains de Camargue"
+    loading="eager"
+    class="mt-8 aspect-[3/2] w-full rounded-2xl object-cover object-center"
+  />
+
+  <section class="mt-12" aria-labelledby="prestations-titre">
+    <h2 id="prestations-titre" class="text-2xl sm:text-3xl">Nos prestations de broyage et de débroussaillage</h2>
+    <div class="mt-6 grid gap-6 sm:grid-cols-2">
+      {
+        prestations.map(([titre, texte]) => (
+          <article class="rounded-2xl border border-earth-100 bg-white p-6">
+            <h3 class="text-xl">{titre}</h3>
+            <p class="mt-2">{texte}</p>
+          </article>
+        ))
+      }
+    </div>
+    <p class="mt-6 max-w-3xl">
+      Après une première visite ou une description de votre terrain, nous vous proposons un devis adapté à la
+      surface, à la densité de la végétation et à l’accessibilité de la parcelle.
+    </p>
+  </section>
+
+  <section class="mt-12" aria-labelledby="obligation-titre">
+    <h2 id="obligation-titre" class="text-2xl sm:text-3xl">Le débroussaillement est une obligation légale</h2>
+    <div class="mt-4 max-w-3xl space-y-3">
+      <p>
+        Le Gard est un département exposé au risque d’incendie. Le Code forestier impose aux propriétaires de
+        débroussailler autour des constructions situées dans ou à proximité des bois, forêts, landes et garrigues
+        (articles L131-10 et suivants).
+      </p>
+      <p>
+        En règle générale, le débroussaillement s’impose sur une profondeur de 50 mètres autour des habitations,
+        et de 10 mètres de part et d’autre des voies d’accès privées. Le maire peut porter cette distance à 100
+        mètres. Le non-respect de l’obligation peut entraîner une amende, et vous rend responsable en cas de
+        sinistre.
+      </p>
+      <p class="rounded-lg border-l-4 border-earth-600 bg-earth-100 p-4 text-sm">
+        Ces informations sont générales. Les règles applicables à votre terrain dépendent de votre commune et de
+        la réglementation en vigueur : renseignez-vous auprès de votre mairie ou de la DDTM du Gard. Voir aussi
+        notre <a class="underline" href={withBase('/faq/')}>FAQ</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="mt-12" aria-labelledby="terrain-titre">
+    <h2 id="terrain-titre" class="text-2xl sm:text-3xl">Un travail adapté au terrain camarguais</h2>
+    <p class="mt-3 max-w-3xl">
+      Zones humides, roselières, parcelles proches d’espaces protégés : en Camargue, certains terrains sont soumis
+      à des règles de protection de l’environnement. Nous vous conseillons avant d’intervenir, et nous adaptons
+      notre méthode à la nature de votre terrain.
+    </p>
+  </section>
+
+  <ClientTypes />
+  <ZoneIntervention />
+  <div class="mt-16"><CallToAction titre="Un terrain à débroussailler ?" /></div>
+</BaseLayout>

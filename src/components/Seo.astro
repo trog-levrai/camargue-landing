@@ -1,0 +1,31 @@
+---
+import { SITE } from '../config/site';
+import { absoluteUrl } from '../utils/url';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Chemin de l'image OG relatif à `base` (image placeholder dans public/). */
+  ogImage?: string;
+}
+const { title, description, ogImage = '/og-default.jpg' } = Astro.props;
+
+// Astro.url.pathname inclut déjà `base`.
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const image = absoluteUrl(ogImage, Astro.site!);
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+<meta name="robots" content="index, follow" />
+
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="fr_FR" />
+<meta property="og:site_name" content={SITE.nom} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={image} />
+<meta property="og:image:alt" content={`${SITE.nom} — jardins, broyage et débroussaillage en Camargue`} />
+<meta name="twitter:card" content="summary_large_image" />

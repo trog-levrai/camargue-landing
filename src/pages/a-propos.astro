@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Img from '../components/Img.astro';
+import ZoneIntervention from '../components/ZoneIntervention.astro';
+import CallToAction from '../components/CallToAction.astro';
+import { SITE } from '../config/site';
+import apropos from '../assets/apropos.jpg';
+
+const valeurs = [
+  ['Proximité', 'Nous connaissons le terrain camarguais, ses contraintes et ses particularités.'],
+  ['Écoute', 'Chaque projet est différent : nous prenons le temps de comprendre votre besoin avant de proposer une solution.'],
+  ['Travail soigné', 'Nous intervenons avec du matériel professionnel et le souci du détail, du premier au dernier mètre carré.'],
+];
+---
+
+<BaseLayout
+  title={`À propos, artisan jardinier à Saint-Gilles | ${SITE.nom}`}
+  description="Découvrez l’entreprise artisanale basée à Saint-Gilles (Gard) : jardins, broyage et débroussaillage pour particuliers, professionnels et collectivités en Camargue."
+  breadcrumb="À propos"
+>
+  <h1 class="text-3xl sm:text-4xl">À propos de {SITE.nom}, artisan à Saint-Gilles</h1>
+  <p class="mt-4 max-w-3xl text-lg">
+    {SITE.nom} est une entreprise artisanale indépendante installée à {SITE.ville} ({SITE.departement}),
+    spécialisée dans la création de jardins et dans le broyage et le débroussaillage de la végétation en Camargue.
+  </p>
+
+  <div class="mt-8 grid items-start gap-8 md:grid-cols-3">
+    <Img
+      src={apropos}
+      alt="Portrait de l’artisan jardinier au travail dans un jardin en Camargue"
+      sizes="(min-width: 768px) 33vw, 100vw"
+      widths={[480, 800]}
+      class="w-full rounded-2xl object-cover"
+    />
+    <div class="space-y-4 md:col-span-2">
+      <h2 class="text-2xl">Notre métier</h2>
+      <p>
+        Nous proposons deux prestations complémentaires : la conception et l’aménagement de jardins, et le broyage
+        et le débroussaillage de terrains. Nous travaillons pour les particuliers et propriétaires de mas, les
+        professionnels et les collectivités.
+      </p>
+      {/* TODO(personnalisation) : présentez votre parcours, votre expérience et votre matériel. */}
+      <p>{'{{PRESENTATION_ARTISAN}}'}</p>
+    </div>
+  </div>
+
+  <section class="mt-12" aria-labelledby="valeurs-titre">
+    <h2 id="valeurs-titre" class="text-2xl sm:text-3xl">Nos engagements</h2>
+    <div class="mt-6 grid gap-6 md:grid-cols-3">
+      {
+        valeurs.map(([titre, texte]) => (
+          <article class="rounded-2xl border border-earth-100 bg-white p-6">
+            <h3 class="text-xl">{titre}</h3>
+            <p class="mt-2">{texte}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mt-12" aria-labelledby="legal-titre">
+    <h2 id="legal-titre" class="text-2xl sm:text-3xl">Informations sur l’entreprise</h2>
+    <p class="mt-3">
+      {SITE.nom} — {SITE.adresseRue}, {SITE.codePostal} {SITE.ville}<br />
+      SIRET : {SITE.siret}
+    </p>
+  </section>
+
+  <ZoneIntervention />
+  <div class="mt-16"><CallToAction /></div>
+</BaseLayout>

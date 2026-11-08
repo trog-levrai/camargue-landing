@@ -1,0 +1,38 @@
+---
+import { withBase } from '../utils/url';
+---
+
+<section aria-labelledby="clients-titre" class="mt-16">
+  <h2 id="clients-titre" class="text-2xl sm:text-3xl">Une prestation adaptée à chaque type de client</h2>
+  <div class="mt-6 grid gap-6 md:grid-cols-3">
+    <article class="rounded-2xl border border-earth-100 bg-white p-6">
+      <h3 class="text-xl">Particuliers et propriétaires de mas</h3>
+      <p class="mt-3">
+        Vous possédez un mas, une maison ou un terrain envahi par les herbes ? Nous intervenons chez vous pour
+        débroussailler, broyer la végétation, entretenir vos parcelles ou imaginer un jardin adapté au climat et
+        au vent de Camargue. Nous venons sur place, évaluons le terrain avec vous et vous proposons une solution
+        claire, sans surprise.
+      </p>
+    </article>
+    <article class="rounded-2xl border border-earth-100 bg-white p-6">
+      <h3 class="text-xl">Professionnels</h3>
+      <p class="mt-3">
+        Exploitations agricoles, domaines, campings, gîtes, entreprises ou syndics : nous assurons le broyage et le
+        débroussaillage de vos espaces, ponctuellement ou de façon régulière, ainsi que l’aménagement paysager de
+        vos sites d’accueil. Nous nous adaptons à vos contraintes de calendrier et d’accès.
+      </p>
+    </article>
+    <article class="rounded-2xl border border-earth-100 bg-white p-6">
+      <h3 class="text-xl">Collectivités</h3>
+      <p class="mt-3">
+        Communes, intercommunalités et structures publiques de Camargue : nous intervenons sur les bords de
+        chemins, terrains communaux et zones à entretenir pour répondre aux obligations de débroussaillement.
+        Contactez-nous pour discuter de vos besoins et obtenir un devis détaillé.
+      </p>
+    </article>
+  </div>
+  <p class="mt-6">
+    Une question ? <a class="font-semibold text-brand-700 underline" href={withBase('/contact/')}>Écrivez-nous</a> ou
+    consultez la <a class="font-semibold text-brand-700 underline" href={withBase('/faq/')}>FAQ</a>.
+  </p>
+</section>

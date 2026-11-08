@@ -1,0 +1,18 @@
+---
+import { SITE, COMMUNES } from '../config/site';
+---
+
+<section aria-labelledby="zone-titre" class="mt-16">
+  <h2 id="zone-titre" class="text-2xl sm:text-3xl">Zone d’intervention : toute la Camargue</h2>
+  <p class="mt-3 max-w-3xl">
+    Basés à {SITE.ville} ({SITE.departement}), nous nous déplaçons dans toute la Camargue et ses environs :
+  </p>
+  <ul class="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+    {
+      COMMUNES.map((commune) => (
+        <li class="rounded-lg border border-earth-100 bg-white px-4 py-3 font-medium">{commune}</li>
+      ))
+    }
+  </ul>
+  <p class="mt-4">Ainsi que les communes alentour : n’hésitez pas à nous appeler pour vérifier que nous couvrons votre secteur.</p>
+</section>

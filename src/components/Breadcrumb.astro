@@ -1,0 +1,17 @@
+---
+import { withBase } from '../utils/url';
+
+interface Props {
+  /** Libellé de la page courante (absent sur l'accueil). */
+  current: string;
+}
+const { current } = Astro.props;
+---
+
+<nav aria-label="Fil d’Ariane" class="mb-6 text-sm text-earth-800">
+  <ol class="flex flex-wrap items-center gap-2">
+    <li><a class="underline" href={withBase('/')}>Accueil</a></li>
+    <li aria-hidden="true">›</li>
+    <li aria-current="page">{current}</li>
+  </ol>
+</nav>

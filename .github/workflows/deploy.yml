@@ -1,0 +1,41 @@
+name: Déploiement sur GitHub Pages
+
+on:
+  # À chaque push sur la branche principale (renommer `main` si besoin).
+  push:
+    branches: [main]
+  # Déclenchement manuel depuis l'onglet « Actions ».
+  workflow_dispatch:
+
+# Permissions nécessaires au déploiement Pages.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Un seul déploiement à la fois ; le plus récent remplace l'en-cours.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupération du dépôt
+        uses: actions/checkout@v7
+      - name: Installation, build (astro build + vérification SEO) et envoi de l'artefact
+        uses: withastro/action@v6
+        with:
+          node-version: 24
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Déploiement sur GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

@@ -1,0 +1,19 @@
+---
+import { SITE, telHref } from '../config/site';
+import WhatsAppButton from './WhatsAppButton.astro';
+---
+
+{/* Mobile : appel + WhatsApp fixés en bas de l'écran. */}
+<div class="fixed inset-x-4 bottom-4 z-50 flex items-stretch gap-2 md:hidden">
+  <a
+    href={telHref}
+    class="flex min-w-0 flex-1 items-center justify-center gap-2 rounded-full bg-brand-600 px-4 py-4 text-lg font-bold text-white shadow-lg active:bg-brand-700"
+    aria-label={`Appeler ${SITE.nom} au ${SITE.telephone}`}
+  >
+    <svg aria-hidden="true" viewBox="0 0 24 24" class="h-6 w-6 shrink-0" fill="currentColor">
+      <path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z" />
+    </svg>
+    <span class="truncate">Appeler maintenant</span>
+  </a>
+  <WhatsAppButton size="lg" class="shadow-lg" />
+</div>

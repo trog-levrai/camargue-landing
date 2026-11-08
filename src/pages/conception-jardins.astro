@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Img from '../components/Img.astro';
+import ClientTypes from '../components/ClientTypes.astro';
+import ZoneIntervention from '../components/ZoneIntervention.astro';
+import CallToAction from '../components/CallToAction.astro';
+import { SITE } from '../config/site';
+import jardin from '../assets/realisations/09.jpg';
+
+const etapes = [
+  ['Visite et écoute', 'Nous venons sur place, observons le terrain (exposition, vent, sol) et recueillons vos envies et votre budget.'],
+  ['Conception', 'Nous vous proposons un plan d’aménagement et une sélection de végétaux adaptés au climat camarguais.'],
+  ['Réalisation', 'Nous réalisons les plantations et les aménagements, puis nous vous donnons nos conseils d’entretien.'],
+];
+const realisations = [
+  'Massifs, plantations d’arbres, d’arbustes et de vivaces méditerranéennes',
+  'Haies et clôtures végétales résistantes au vent',
+  'Engazonnement et prairies fleuries',
+  'Allées, cheminements et petits aménagements extérieurs',
+  'Mise en place de systèmes d’arrosage économes en eau',
+  'Remise en état de jardins existants',
+  'Réalisation de boulodromes',
+];
+---
+
+<BaseLayout
+  title={`Création de jardin à Arles et en Camargue | ${SITE.nom}`}
+  description="Conception et aménagement de jardins à Saint-Gilles, Arles et dans toute la Camargue : plantes adaptées au vent et à la sécheresse, du projet à la réalisation."
+  breadcrumb="Conception de jardins"
+>
+  <h1 class="text-3xl sm:text-4xl">Création et aménagement de jardins en Camargue</h1>
+  <p class="mt-4 max-w-3xl text-lg">
+    Vous voulez créer un jardin à Arles, à Saint-Gilles ou ailleurs en Camargue ? {SITE.nom} conçoit et aménage
+    votre extérieur de A à Z, avec des végétaux choisis pour résister au vent, au sel et à la sécheresse.
+  </p>
+
+  <Img
+    src={jardin}
+    alt="Massif triangulaire paillé autour d’un arbre, pelouse tondue et haie sur un jardin avec piscine en Camargue"
+    loading="eager"
+    class="mt-8 aspect-[3/2] w-full rounded-2xl object-cover object-center"
+  />
+
+  <section class="mt-12" aria-labelledby="climat-titre">
+    <h2 id="climat-titre" class="text-2xl sm:text-3xl">Un jardin pensé pour le climat de Camargue</h2>
+    <p class="mt-3 max-w-3xl">
+      La Camargue impose ses règles : mistral, étés chauds et secs, embruns et sols parfois salés. Un jardin
+      réussi ici repose sur le choix de plantes robustes, d’une bonne implantation et d’un entretien raisonné.
+      Nous vous conseillons sur chaque point pour que votre jardin reste beau avec un minimum d’arrosage.
+    </p>
+  </section>
+
+  <section class="mt-12" aria-labelledby="etapes-titre">
+    <h2 id="etapes-titre" class="text-2xl sm:text-3xl">Comment nous travaillons</h2>
+    <ol class="mt-6 grid gap-6 md:grid-cols-3">
+      {
+        etapes.map(([titre, texte], i) => (
+          <li class="rounded-2xl border border-earth-100 bg-white p-6">
+            <p class="font-display text-3xl text-earth-600" aria-hidden="true">{i + 1}</p>
+            <h3 class="mt-1 text-xl">{titre}</h3>
+            <p class="mt-2">{texte}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <section class="mt-12" aria-labelledby="realisations-titre">
+    <h2 id="realisations-titre" class="text-2xl sm:text-3xl">Ce que nous pouvons réaliser pour vous</h2>
+    <ul class="mt-4 list-disc space-y-2 pl-6">
+      {realisations.map((r) => <li>{r}</li>)}
+    </ul>
+  </section>
+
+  <ClientTypes />
+  <ZoneIntervention />
+  <div class="mt-16"><CallToAction titre="Un jardin à créer ou à repenser ?" /></div>
+</BaseLayout>

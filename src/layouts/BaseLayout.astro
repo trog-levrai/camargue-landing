@@ -1,0 +1,53 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import MobileCallButton from '../components/MobileCallButton.astro';
+import Seo from '../components/Seo.astro';
+import JsonLd from '../components/JsonLd.astro';
+import { localBusiness, breadcrumb as breadcrumbLd } from '../utils/jsonld';
+import { absoluteUrl } from '../utils/url';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Libellé de la page dans le fil d'Ariane ; absent pour l'accueil. */
+  breadcrumb?: string;
+}
+const { title, description, breadcrumb } = Astro.props;
+const site = Astro.site!;
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <Seo title={title} description={description} />
+    <JsonLd data={localBusiness(site)} />
+    {
+      breadcrumb && (
+        <JsonLd
+          data={breadcrumbLd([
+            { name: 'Accueil', url: absoluteUrl('/', site) },
+            { name: breadcrumb, url: new URL(Astro.url.pathname, site).href },
+          ])}
+        />
+      )
+    }
+    <slot name="head" />
+  </head>
+  <body class="pb-24 md:pb-0">
+    <a href="#contenu" class="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:z-50 focus:bg-white focus:p-3">
+      Aller au contenu
+    </a>
+    <Header />
+    <main id="contenu" class="mx-auto max-w-6xl px-4 py-8 sm:py-12">
+      {breadcrumb && <Breadcrumb current={breadcrumb} />}
+      <slot />
+    </main>
+    <Footer />
+    <MobileCallButton />
+  </body>
+</html>

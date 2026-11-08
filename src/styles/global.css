@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+/*
+  Design tokens — UNIQUE emplacement pour palette et polices.
+  Tailwind v4 expose chaque token en variable CSS (--color-*, --font-*)
+  ET en classe utilitaire (bg-brand-600, font-display…).
+*/
+@theme {
+  /* TODO(personnalisation) : palette PLACEHOLDER vert / terre camarguais.
+     À remplacer par les couleurs de la carte de visite. */
+  --color-brand-50: #f1f6ee;
+  --color-brand-100: #dfebd8;
+  --color-brand-500: #5a8a43;
+  --color-brand-600: #4a7336; /* vert principal (boutons, liens) */
+  --color-brand-700: #3b5c2b;
+  --color-brand-900: #1f3317;
+
+  --color-earth-50: #faf6f0;
+  --color-earth-100: #f1e8d9;
+  --color-earth-300: #d3b98f;
+  --color-earth-600: #9a6b3d; /* terre / ocre camarguais */
+  --color-earth-800: #5e4126;
+
+  --color-ink: #1d2418; /* texte principal */
+
+  /* TODO(personnalisation) : polices — pile système par défaut (aucune requête externe).
+     Pour une police web, l'auto-héberger puis la déclarer ici. */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-earth-50 font-sans text-ink antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display text-brand-900;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand-600;
+  }
+}

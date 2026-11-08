@@ -1,0 +1,47 @@
+---
+import type { ImageMetadata } from 'astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Img from '../components/Img.astro';
+import CallToAction from '../components/CallToAction.astro';
+import { SITE } from '../config/site';
+import { GALERIE_REALISATIONS } from '../data/realisations';
+
+const fichiers = import.meta.glob<{ default: ImageMetadata }>('../assets/realisations/*.{jpg,jpeg,png,webp}', {
+  eager: true,
+  import: 'default',
+});
+
+const photos = GALERIE_REALISATIONS.map(({ fichier, alt }) => {
+  const src = fichiers[`../assets/realisations/${fichier}`] as ImageMetadata | undefined;
+  return src ? { alt, src } : null;
+}).filter((p): p is { alt: string; src: ImageMetadata } => p !== null);
+---
+
+<BaseLayout
+  title={`Réalisations et chantiers en Camargue | ${SITE.nom}`}
+  description="Galerie de nos chantiers terminés : débroussaillage, broyage de végétation et création de jardins à Saint-Gilles et en Camargue."
+  breadcrumb="Réalisations"
+>
+  <h1 class="text-3xl sm:text-4xl">Nos réalisations en Camargue</h1>
+  <p class="mt-4 max-w-3xl text-lg">
+    Voici une sélection de chantiers déjà réalisés par {SITE.nom} en Camargue : débroussaillage, broyage de
+    végétation et aménagement de jardins.
+  </p>
+
+  <ul class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    {
+      photos.map(({ src, alt }) => (
+        <li class="overflow-hidden rounded-2xl border border-earth-100 bg-white shadow-sm">
+          <Img
+            src={src}
+            alt={alt}
+            sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+            class="aspect-[4/3] w-full object-cover"
+          />
+        </li>
+      ))
+    }
+  </ul>
+
+  <div class="mt-16"><CallToAction titre="Vous avez un projet similaire ?" /></div>
+</BaseLayout>

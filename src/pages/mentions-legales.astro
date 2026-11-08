@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import { SITE, telHref } from '../config/site';
+---
+
+<BaseLayout
+  title={`Mentions légales | ${SITE.nom}`}
+  description={`Mentions légales du site de ${SITE.nom} : éditeur, SIRET, hébergeur et protection des données personnelles.`}
+  breadcrumb="Mentions légales"
+>
+  <h1 class="text-3xl sm:text-4xl">Mentions légales</h1>
+  <p class="mt-4 max-w-3xl text-lg">
+    Ce site est édité par {SITE.nom}, entreprise artisanale basée à {SITE.ville} ({SITE.departement}).
+  </p>
+
+  {/* TODO(personnalisation) : vérifier et compléter ces mentions (forme juridique, directeur de publication, etc.). */}
+  <div class="mt-8 max-w-3xl space-y-8">
+    <section>
+      <h2 class="text-2xl">Éditeur du site</h2>
+      <p class="mt-2">
+        {SITE.nom}<br />
+        {SITE.adresseRue}, {SITE.codePostal} {SITE.ville}<br />
+        SIRET : {SITE.siret}<br />
+        Téléphone :
+        <span class="inline-flex items-center gap-2">
+          <a class="underline" href={telHref}>{SITE.telephone}</a>
+          <WhatsAppButton size="sm" />
+        </span>
+        <br />
+        E-mail : {SITE.email}<br />
+        Directeur de la publication : {'{{NOM_DIRIGEANT}}'}
+      </p>
+    </section>
+    <section>
+      <h2 class="text-2xl">Hébergeur</h2>
+      <p class="mt-2">
+        Ce site est hébergé par GitHub, Inc. (GitHub Pages), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107,
+        États-Unis.
+      </p>
+    </section>
+    <section>
+      <h2 class="text-2xl">Données personnelles</h2>
+      <p class="mt-2">
+        Les informations saisies dans le formulaire de contact (nom, e-mail, téléphone, message) sont transmises via
+        le service Formspree et utilisées uniquement pour répondre à votre demande. Vous pouvez demander l’accès, la
+        rectification ou la suppression de vos données en nous écrivant à {SITE.email}. Ce site n’utilise pas de
+        cookies de suivi.
+      </p>
+    </section>
+    <section>
+      <h2 class="text-2xl">Propriété intellectuelle</h2>
+      <p class="mt-2">
+        Les textes et images de ce site sont la propriété de {SITE.nom}, sauf mention contraire. Toute reproduction
+        sans autorisation est interdite.
+      </p>
+    </section>
+  </div>
+</BaseLayout>
