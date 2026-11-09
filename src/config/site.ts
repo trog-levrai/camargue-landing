@@ -4,11 +4,12 @@
  * Aucune coordonnée réelle n'est inventée.
  */
 export const SITE = {
-  nom: '{{NOM_ENTREPRISE}}',
-  telephone: '{{TELEPHONE}}', // affichage, ex. « 06 12 34 56 78 »
-  telephoneInternational: '{{TELEPHONE_INTERNATIONAL}}', // pour tel: et WhatsApp, ex. « +33612345678 »
+  nom: 'Camargue environnement paysage',
+  telephone: '06 72 60 95 53',
+  telephoneInternational: '+33672609553',
   email: '{{EMAIL}}',
-  siret: '{{SIRET}}',
+  siret: '10714637500012',
+  dirigeant: 'Pierre-Elie Chapron',
   adresseRue: '{{ADRESSE_RUE}}',
   logo: '{{LOGO}}', // TODO : fichier logo à placer dans src/assets/ puis à brancher dans Header.astro
   formspreeId: '{{FORMSPREE_ID}}', // identifiant du formulaire Formspree (https://formspree.io)
