@@ -5,7 +5,7 @@ import { withBase } from '../utils/url';
 const current = Astro.url.pathname;
 ---
 
-<header class="sticky top-0 z-40 border-b border-earth-100 bg-white/95 backdrop-blur">
+<header class="relative z-50 border-b border-earth-100 bg-white">
   <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
     <a href={withBase('/')} class="font-display text-lg font-bold text-brand-700 sm:text-xl">
       {SITE.nom}

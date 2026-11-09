@@ -38,16 +38,18 @@ const site = Astro.site!;
     }
     <slot name="head" />
   </head>
-  <body class="pb-24 md:pb-0">
+  <body class="flex h-dvh flex-col overflow-hidden pb-24 md:pb-0">
     <a href="#contenu" class="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:z-50 focus:bg-white focus:p-3">
       Aller au contenu
     </a>
     <Header />
-    <main id="contenu" class="mx-auto max-w-6xl px-4 py-8 sm:py-12">
-      {breadcrumb && <Breadcrumb current={breadcrumb} />}
-      <slot />
-    </main>
-    <Footer />
+    <div class="relative z-0 min-h-0 flex-1 overflow-y-auto">
+      <main id="contenu" class="mx-auto max-w-6xl px-4 py-8 sm:py-12">
+        {breadcrumb && <Breadcrumb current={breadcrumb} />}
+        <slot />
+      </main>
+      <Footer />
+    </div>
     <MobileCallButton />
   </body>
 </html>
