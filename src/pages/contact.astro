@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
-import { SITE, telHref, mailHref } from '../config/site';
+import { SITE, telHref, mailHref, isFilled } from '../config/site';
 
 const champ = 'mt-1 w-full rounded-lg border border-earth-300 bg-white px-4 py-3 text-base';
 ---
@@ -13,8 +13,9 @@ const champ = 'mt-1 w-full rounded-lg border border-earth-300 bg-white px-4 py-3
 >
   <h1 class="text-3xl sm:text-4xl">Contact et demande de devis en Camargue</h1>
   <p class="mt-4 max-w-3xl text-lg">
-    Pour un devis de débroussaillage, de broyage de végétation ou de création de jardin à Saint-Gilles et en
-    Camargue, appelez-nous, écrivez-nous sur WhatsApp ou par e-mail, ou remplissez le formulaire ci-dessous.
+    {SITE.nom} est joignable au {SITE.telephone} pour un devis de débroussaillage, de broyage de végétation ou de
+    création de jardin à Saint-Gilles et en Camargue. Appelez-nous, écrivez-nous sur WhatsApp
+    {isFilled(SITE.email) ? ', par e-mail,' : ''} ou remplissez le formulaire ci-dessous.
   </p>
 
   <section class="mt-8 grid gap-4 sm:grid-cols-2" aria-label="Moyens de contact">
@@ -24,9 +25,13 @@ const champ = 'mt-1 w-full rounded-lg border border-earth-300 bg-white px-4 py-3
       </a>
       <WhatsAppButton size="lg" />
     </div>
-    <a href={mailHref} class="rounded-2xl border-2 border-brand-600 p-5 text-center font-bold text-brand-700 hover:bg-brand-50">
-      E-mail<br /><span class="font-normal">{SITE.email}</span>
-    </a>
+    {
+      isFilled(SITE.email) && (
+        <a href={mailHref} class="rounded-2xl border-2 border-brand-600 p-5 text-center font-bold text-brand-700 hover:bg-brand-50">
+          E-mail<br /><span class="font-normal">{SITE.email}</span>
+        </a>
+      )
+    }
   </section>
 
   <section class="mt-12 max-w-2xl" aria-labelledby="form-titre">

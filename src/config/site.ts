@@ -44,6 +44,7 @@ export const NAV = [
   { label: 'Contact', path: '/contact/' },
 ] as const;
 
+export const isFilled = (value: string) => !value.includes('{{');
 export const telHref = `tel:${SITE.telephoneInternational}`;
 export const mailHref = `mailto:${SITE.email}`;
 // wa.me attend le numéro sans « + » ni espaces.

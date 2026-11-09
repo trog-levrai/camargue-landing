@@ -1,4 +1,4 @@
-import { SITE, COMMUNES } from '../config/site';
+import { SITE, COMMUNES, isFilled } from '../config/site';
 import type { FaqItem } from '../data/faq';
 import { absoluteUrl } from './url';
 
@@ -14,10 +14,10 @@ export function localBusiness(site: URL | string) {
     url,
     image: absoluteUrl('/og-default.jpg', site),
     telephone: SITE.telephoneInternational,
-    email: SITE.email,
+    ...(isFilled(SITE.email) ? { email: SITE.email } : {}),
     address: {
       '@type': 'PostalAddress',
-      streetAddress: SITE.adresseRue,
+      ...(isFilled(SITE.adresseRue) ? { streetAddress: SITE.adresseRue } : {}),
       addressLocality: SITE.ville,
       postalCode: SITE.codePostal,
       addressRegion: SITE.region,

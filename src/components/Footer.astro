@@ -1,5 +1,5 @@
 ---
-import { SITE, NAV, COMMUNES, telHref, mailHref } from '../config/site';
+import { SITE, NAV, COMMUNES, telHref, mailHref, isFilled } from '../config/site';
 import { withBase } from '../utils/url';
 import WhatsAppButton from './WhatsAppButton.astro';
 ---
@@ -16,10 +16,19 @@ import WhatsAppButton from './WhatsAppButton.astro';
           <a class="underline" href={telHref}>{SITE.telephone}</a>
           <WhatsAppButton size="sm" />
         </span>
-        <br />
-        <a class="underline" href={mailHref}>{SITE.email}</a>
+        {
+          isFilled(SITE.email) && (
+            <>
+              <br />
+              <a class="underline" href={mailHref}>{SITE.email}</a>
+            </>
+          )
+        }
       </p>
-      <p class="mt-3 text-sm">{SITE.adresseRue}, {SITE.codePostal} {SITE.ville}</p>
+      <p class="mt-3 text-sm">
+        {isFilled(SITE.adresseRue) ? `${SITE.adresseRue}, ` : ''}
+        {SITE.codePostal} {SITE.ville}
+      </p>
     </section>
 
     <nav aria-label="Pied de page">
