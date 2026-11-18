@@ -10,12 +10,12 @@ Prérequis : Node.js ≥ 22.23.4 (24 recommandé).
 
 ```bash
 npm install
-npm run dev            # serveur de développement : http://localhost:4321/broyage/
+npm run dev            # serveur de développement : http://localhost:4321/
 npm run build          # build statique dans dist/ + vérification SEO
 npm run preview        # sert le build : à utiliser pour tester le rendu final
 ```
 
-> L'adresse locale contient le chemin `base` défini dans `astro.config.mjs` (par défaut `/broyage/`).
+> L'adresse locale suit le `base` défini dans `astro.config.mjs` ; ici il est à `/` pour le domaine personnalisé.
 
 ### Tester le rendu mobile
 
