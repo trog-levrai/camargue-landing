@@ -31,6 +31,20 @@ export const COMMUNES = [
   'Port-Saint-Louis-du-Rhône',
   'Tarascon',
   'Beaucaire',
+  'Beauvoisin',
+  'Vauvert',
+  'Le Cailar',
+  'Aimargues',
+  'Uchaud',
+  'Vergèze',
+  'Générac',
+  'Garons',
+  'Caissargues',
+  'Bouillargues',
+  'Milhaud',
+  'Rodilhan',
+  'Manduel',
+  'Nîmes',
 ] as const;
 
 /** Navigation principale (chemins relatifs à `base`, voir `src/utils/url.ts`). */
