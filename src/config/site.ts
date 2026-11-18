@@ -65,5 +65,8 @@ export const NAV = [
 export const isFilled = (value: string) => !value.includes('{{');
 export const telHref = `tel:${SITE.telephoneInternational}`;
 export const mailHref = `mailto:${SITE.email}`;
+/** Texte prérempli pour WhatsApp et le formulaire Formspree (modifiable avant envoi). */
+export const messageContactDefaut =
+  'Bonjour, je souhaiterais un devis pour un projet de jardin en Camargue. Commune et type de projet à préciser.';
 // wa.me attend le numéro sans « + » ni espaces.
-export const whatsappHref = `https://wa.me/${SITE.telephoneInternational.replace(/^\+/, '')}`;
+export const whatsappHref = `https://wa.me/${SITE.telephoneInternational.replace(/^\+/, '')}?text=${encodeURIComponent(messageContactDefaut)}`;

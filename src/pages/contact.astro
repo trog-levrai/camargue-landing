@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
-import { SITE, telHref, mailHref, isFilled } from '../config/site';
+import { SITE, telHref, mailHref, isFilled, messageContactDefaut } from '../config/site';
 import { withBase } from '../utils/url';
 
 const champ = 'mt-1 w-full rounded-lg border border-earth-300 bg-white px-4 py-3 text-base';
@@ -65,7 +65,7 @@ const champ = 'mt-1 w-full rounded-lg border border-earth-300 bg-white px-4 py-3
       </div>
       <div>
         <label for="message" class="font-semibold">Message *</label>
-        <textarea id="message" name="message" rows="5" required class={champ}></textarea>
+        <textarea id="message" name="message" rows="5" required class={champ}>{messageContactDefaut}</textarea>
       </div>
       {/* Anti-spam (honeypot) : champ masqué, ignoré par Formspree s'il est rempli. */}
       <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
