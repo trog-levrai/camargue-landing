@@ -9,21 +9,21 @@ import { SITE, telHref } from '../config/site';
 import { withBase } from '../utils/url';
 import hero from '../assets/realisations/10.jpg';
 import jardin from '../assets/realisations/09.jpg';
-import broyage from '../assets/broyeur.webp';
+import realisation from '../assets/realisations/04.jpg';
 ---
 
 <BaseLayout
-  title={`Broyage, débroussaillage et jardins en Camargue | ${SITE.nom}`}
-  description={`Artisan à Saint-Gilles (Gard) : broyage de végétation, débroussaillage et création de jardins dans toute la Camargue, pour particuliers, professionnels et collectivités.`}
+  title={`Paysagiste et conception de jardins en Camargue | ${SITE.nom}`}
+  description={`Artisan paysagiste à Saint-Gilles (Gard) : conception et aménagement de jardins dans toute la Camargue, pour particuliers, professionnels et collectivités.`}
 >
   <section class="grid items-center gap-8 lg:grid-cols-2">
     <div>
       <h1 class="text-3xl leading-tight sm:text-4xl lg:text-5xl">
-        Broyage, débroussaillage et création de jardins en Camargue
+        Paysagiste et conception de jardins en Camargue
       </h1>
       <p class="mt-4 text-lg">
-        {SITE.nom} est un artisan basé à {SITE.ville} ({SITE.departement}) qui débroussaille et broie la
-        végétation de vos terrains, et qui conçoit et aménage vos jardins, dans toute la Camargue.
+        {SITE.nom} est un artisan paysagiste basé à {SITE.ville} ({SITE.departement}) qui conçoit et aménage vos
+        jardins dans toute la Camargue.
       </p>
       <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
         <div class="flex items-center gap-2">
@@ -52,25 +52,8 @@ import broyage from '../assets/broyeur.webp';
   </section>
 
   <section aria-labelledby="services-titre" class="mt-16">
-    <h2 id="services-titre" class="text-2xl sm:text-3xl">Nos deux prestations</h2>
+    <h2 id="services-titre" class="text-2xl sm:text-3xl">Conception de jardins et réalisations</h2>
     <div class="mt-6 grid gap-6 md:grid-cols-2">
-      <article class="overflow-hidden rounded-2xl border border-earth-100 bg-white">
-        <Img
-          src={broyage}
-          alt="Broyeur professionnel pour le débroussaillage et le broyage de végétation sur les terrains de Camargue"
-          class="aspect-[3/2] w-full object-cover object-center"
-        />
-        <div class="p-6">
-          <h3 class="text-xl">Broyage et débroussaillage</h3>
-          <p class="mt-2">
-            Terrain envahi par les herbes, friche, parcelle à entretenir ou obligation légale de débroussaillement :
-            nous remettons votre terrain en état et l’entretenons dans la durée.
-          </p>
-          <a class="mt-4 inline-block font-semibold text-brand-700 underline" href={withBase('/broyage-debroussaillage/')}>
-            Découvrir le broyage et le débroussaillage
-          </a>
-        </div>
-      </article>
       <article class="overflow-hidden rounded-2xl border border-earth-100 bg-white">
         <Img
           src={jardin}
@@ -84,7 +67,24 @@ import broyage from '../assets/broyeur.webp';
             la sécheresse de la Camargue.
           </p>
           <a class="mt-4 inline-block font-semibold text-brand-700 underline" href={withBase('/conception-jardins/')}>
-            Découvrir la conception de jardins
+            En savoir plus sur la conception de jardins
+          </a>
+        </div>
+      </article>
+      <article class="overflow-hidden rounded-2xl border border-earth-100 bg-white">
+        <Img
+          src={realisation}
+          alt="Cour-jardin avec pas japonais en ardoise, gravier clair et jardinières avec grimpantes sur treillage"
+          class="aspect-[3/2] w-full object-cover object-center"
+        />
+        <div class="p-6">
+          <h3 class="text-xl">Nos réalisations</h3>
+          <p class="mt-2">
+            Massifs, allées, cour-jardins, plantations : parcourez une sélection de chantiers déjà menés en Camargue
+            pour vous inspirer avant votre projet.
+          </p>
+          <a class="mt-4 inline-block font-semibold text-brand-700 underline" href={withBase('/realisations/')}>
+            Voir la galerie de réalisations
           </a>
         </div>
       </article>
@@ -95,6 +95,6 @@ import broyage from '../assets/broyeur.webp';
   <ZoneIntervention />
 
   <div class="mt-16">
-    <CallToAction />
+    <CallToAction titre="Un projet de jardin ?" />
   </div>
 </BaseLayout>

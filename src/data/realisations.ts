@@ -9,7 +9,7 @@ export const GALERIE_REALISATIONS = [
   },
   {
     fichier: '02.jpg',
-    alt: 'Massif paysager paillé de broyage de bois, arbustes taillés et piscine couverte sur une villa',
+    alt: 'Massif paysager paillé de bois, arbustes taillés et piscine couverte sur une villa',
   },
   {
     fichier: '03.jpg',
@@ -33,7 +33,7 @@ export const GALERIE_REALISATIONS = [
   },
   {
     fichier: '08.jpg',
-    alt: 'Allée de circulation couverte de broyage de bois le long d’une haie taillée et d’un muret en pierre',
+    alt: 'Allée de circulation couverte de paillage bois le long d’une haie taillée et d’un muret en pierre',
   },
   {
     fichier: '09.jpg',
@@ -45,6 +45,6 @@ export const GALERIE_REALISATIONS = [
   },
   {
     fichier: '11.jpg',
-    alt: 'Nouveau massif en broyage de bois, rochers décoratifs et pins après préparation du sol en jardin de maison',
+    alt: 'Nouveau massif en paillage bois, rochers décoratifs et pins après préparation du sol en jardin de maison',
   },
 ] as const;

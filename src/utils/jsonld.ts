@@ -31,7 +31,6 @@ export function localBusiness(site: URL | string) {
     areaServed: COMMUNES.map((name) => ({ '@type': 'City', name })),
     makesOffer: [
       { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Conception et aménagement de jardins' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Broyage de végétation et débroussaillage' } },
     ],
   };
 }

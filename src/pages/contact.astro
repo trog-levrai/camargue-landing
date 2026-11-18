@@ -8,14 +8,14 @@ const champ = 'mt-1 w-full rounded-lg border border-earth-300 bg-white px-4 py-3
 ---
 
 <BaseLayout
-  title={`Contact et devis débroussaillage, jardins | ${SITE.nom}`}
-  description="Contactez notre artisan à Saint-Gilles par téléphone, WhatsApp, e-mail ou formulaire pour un devis de débroussaillage, de broyage ou de création de jardin en Camargue."
+  title={`Contact et devis jardin, paysagiste | ${SITE.nom}`}
+  description="Contactez notre paysagiste à Saint-Gilles par téléphone, WhatsApp, e-mail ou formulaire pour un devis de conception ou d’aménagement de jardin en Camargue."
   breadcrumb="Contact"
 >
   <h1 class="text-3xl sm:text-4xl">Contact et demande de devis en Camargue</h1>
   <p class="mt-4 max-w-3xl text-lg">
-    {SITE.nom} est joignable au {SITE.telephone} pour un devis de débroussaillage, de broyage de végétation ou de
-    création de jardin à Saint-Gilles et en Camargue. Appelez-nous, écrivez-nous sur WhatsApp
+    {SITE.nom} est joignable au {SITE.telephone} pour un devis de conception ou d’aménagement de jardin à
+    Saint-Gilles et en Camargue. Appelez-nous, écrivez-nous sur WhatsApp
     {isFilled(SITE.email) ? ', par e-mail,' : ''} ou remplissez le formulaire ci-dessous.
   </p>
 
@@ -58,8 +58,8 @@ const champ = 'mt-1 w-full rounded-lg border border-earth-300 bg-white px-4 py-3
       <div>
         <label for="sujet" class="font-semibold">Votre demande</label>
         <select id="sujet" name="sujet" class={champ}>
-          <option>Broyage / débroussaillage</option>
           <option>Conception / aménagement de jardin</option>
+          <option>Entretien d’espaces verts</option>
           <option>Autre demande</option>
         </select>
       </div>

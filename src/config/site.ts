@@ -56,7 +56,6 @@ export const COMMUNES = [
 export const NAV = [
   { label: 'Accueil', path: '/' },
   { label: 'Conception de jardins', path: '/conception-jardins/' },
-  { label: 'Broyage et débroussaillage', path: '/broyage-debroussaillage/' },
   { label: 'Réalisations', path: '/realisations/' },
   { label: 'À propos', path: '/a-propos/' },
   { label: 'FAQ', path: '/faq/' },

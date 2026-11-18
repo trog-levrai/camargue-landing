@@ -1,8 +1,8 @@
-# Site vitrine — jardins, broyage et débroussaillage (Camargue)
+# Site vitrine — paysagiste et conception de jardins (Camargue)
 
 Site statique en français (Astro + Tailwind CSS, aucun JavaScript client) pour un artisan basé à Saint-Gilles (Gard), prêt à être hébergé sur **GitHub Pages**.
 
-Pages : accueil, conception de jardins, broyage et débroussaillage, réalisations (galerie de chantiers), à propos, FAQ, contact, mentions légales.
+Pages : accueil, conception de jardins, réalisations (galerie de chantiers), à propos, FAQ, contact, mentions légales.
 
 ## Développement local
 
@@ -81,5 +81,5 @@ Repérez tous les placeholders : `grep -rn "{{" src` (ils sont aussi comptés pa
 - [ ] **Page À propos** — `src/pages/a-propos.astro` : remplacez `{{PRESENTATION_ARTISAN}}` par votre présentation.
 - [ ] **Mentions légales** — `src/pages/mentions-legales.astro` : `{{NOM_DIRIGEANT}}`, forme juridique, et relecture complète.
 - [ ] **Coordonnées GPS** — `geo` dans `src/config/site.ts` : valeurs approximatives de Saint-Gilles à affiner avec votre adresse.
-- [ ] **Textes** — relisez les pages et la FAQ (`src/data/faq.ts`) pour qu'ils correspondent à votre pratique réelle, en particulier le paragraphe sur l'**obligation légale de débroussaillement** (informations générales à faire valider auprès de la mairie ou de la DDTM du Gard).
+- [ ] **Textes** — relisez les pages et la FAQ (`src/data/faq.ts`) pour qu'ils correspondent à votre pratique réelle.
 - [ ] **Après mise en ligne** — vérifiez `/robots.txt`, `/llms.txt`, `/sitemap-index.xml`, testez les liens `tel:`, WhatsApp et le formulaire, puis déclarez le sitemap dans Google Search Console.
