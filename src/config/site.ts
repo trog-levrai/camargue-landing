@@ -7,12 +7,17 @@ export const SITE = {
   nom: 'Camargue environnement paysage',
   telephone: '06 72 60 95 53',
   telephoneInternational: '+33672609553',
-  email: '{{EMAIL}}',
+  email: 'Camargue.serviceplus@gmail.com',
   siret: '10714637500012',
+  tva: 'FR52107146375',
+  formeJuridique: 'Société par actions simplifiée (SAS)',
+  capital: '1 000 €',
+  rcs: 'RCS Nîmes 107 146 375', // greffe déduit du siège (Gard) : à vérifier sur le Kbis
+  rm: '{{RM}}', // ex. « RM Nîmes 107 146 375 » (immatriculation au Répertoire des Métiers)
   dirigeant: 'Pierre-Elie Chapron',
-  adresseRue: '{{ADRESSE_RUE}}',
+  adresseRue: '44 route de Générac',
   logo: '{{LOGO}}', // TODO : fichier logo à placer dans src/assets/ puis à brancher dans Header.astro
-  formspreeId: '{{FORMSPREE_ID}}', // identifiant du formulaire Formspree (https://formspree.io)
+  formspreeId: 'mljbbkoz', // identifiant du formulaire Formspree (https://formspree.io)
   ville: 'Saint-Gilles',
   codePostal: '30800',
   departement: 'Gard',

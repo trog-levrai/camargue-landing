@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
-import { SITE, telHref } from '../config/site';
+import { SITE, telHref, isFilled } from '../config/site';
 ---
 
 <BaseLayout
@@ -21,7 +21,12 @@ import { SITE, telHref } from '../config/site';
       <p class="mt-2">
         {SITE.nom}<br />
         {SITE.adresseRue}, {SITE.codePostal} {SITE.ville}<br />
+        Forme juridique : {SITE.formeJuridique}<br />
+        {isFilled(SITE.capital) && <>Capital social : {SITE.capital}<br /></>}
         SIRET : {SITE.siret}<br />
+        {isFilled(SITE.rcs) && <>{SITE.rcs}<br /></>}
+        {isFilled(SITE.rm) && <>{SITE.rm}<br /></>}
+        N° de TVA intracommunautaire : {SITE.tva}<br />
         Téléphone :
         <span class="inline-flex items-center gap-2">
           <a class="underline" href={telHref}>{SITE.telephone}</a>
@@ -29,6 +34,7 @@ import { SITE, telHref } from '../config/site';
         </span>
         <br />
         E-mail : {SITE.email}<br />
+        Représentant légal : {SITE.dirigeant}, Président<br />
         Directeur de la publication : {SITE.dirigeant}
       </p>
     </section>
@@ -42,10 +48,25 @@ import { SITE, telHref } from '../config/site';
     <section>
       <h2 class="text-2xl">Données personnelles</h2>
       <p class="mt-2">
-        Les informations saisies dans le formulaire de contact (nom, e-mail, téléphone, message) sont transmises via
-        le service Formspree et utilisées uniquement pour répondre à votre demande. Vous pouvez demander l’accès, la
-        rectification ou la suppression de vos données en nous écrivant à {SITE.email}. Ce site n’utilise pas de
-        cookies de suivi.
+        Le responsable du traitement est {SITE.nom} ({SITE.dirigeant}). Les informations saisies dans le formulaire de
+        contact (nom, e-mail, téléphone, commune, message) sont utilisées uniquement pour répondre à votre demande de
+        devis ou de renseignements, sur la base de votre demande (mesures précontractuelles) et de notre intérêt
+        légitime à répondre à nos contacts. Elles sont conservées 3 ans au plus après le dernier échange.
+      </p>
+      <p class="mt-2">
+        <strong>Sous-traitant : Formspree.</strong> Le formulaire est opéré par Formspree, Inc. (États-Unis), qui
+        reçoit vos données pour nous les transmettre par e-mail et les stocker pour notre compte. Ces données sont donc
+        transférées hors de l’Union européenne. Voir la
+        <a class="underline" href="https://formspree.io/legal/privacy-policy" rel="noopener">politique de confidentialité de Formspree</a>.
+      </p>
+      <p class="mt-2">
+        Vous disposez d’un droit d’accès, de rectification, d’effacement, d’opposition, de limitation et de
+        portabilité de vos données : écrivez-nous à {SITE.email}. Vous pouvez aussi introduire une réclamation auprès
+        de la CNIL (<a class="underline" href="https://www.cnil.fr" rel="noopener">cnil.fr</a>).
+      </p>
+      <p class="mt-2">
+        <strong>Cookies :</strong> ce site ne dépose aucun cookie de suivi ni de mesure d’audience ; aucun
+        consentement n’est donc requis.
       </p>
     </section>
     <section>

@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 import { SITE, telHref, mailHref, isFilled } from '../config/site';
+import { withBase } from '../utils/url';
 
 const champ = 'mt-1 w-full rounded-lg border border-earth-300 bg-white px-4 py-3 text-base';
 ---
@@ -72,8 +73,9 @@ const champ = 'mt-1 w-full rounded-lg border border-earth-300 bg-white px-4 py-3
         Envoyer ma demande
       </button>
       <p class="text-sm">
-        Les informations saisies servent uniquement à répondre à votre demande. Les champs marqués d’une * sont
-        obligatoires.
+        Les informations saisies servent uniquement à répondre à votre demande et sont transmises via le service
+        Formspree (États-Unis). Voir nos <a class="underline" href={withBase('/mentions-legales/')}>mentions légales</a>
+        pour exercer vos droits. Les champs marqués d’une * sont obligatoires.
       </p>
     </form>
   </section>
